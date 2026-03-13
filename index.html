@@ -336,11 +336,10 @@ function postResultToSheets(result){
       tabs: result.tabs,
       date: result.date
     });
-    const iframe = document.createElement('iframe');
-    iframe.style.display = 'none';
-    iframe.src = SHEETS_URL + "?" + params.toString();
-    document.body.appendChild(iframe);
-    setTimeout(() => document.body.removeChild(iframe), 5000);
+    const script = document.createElement('script');
+    script.src = SHEETS_URL + "?" + params.toString();
+    document.head.appendChild(script);
+    setTimeout(() => document.head.removeChild(script), 5000);
   } catch(e){ console.warn("Sheets post failed", e); }
 }
 
